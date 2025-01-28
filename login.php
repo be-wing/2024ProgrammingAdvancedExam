@@ -5,10 +5,8 @@ include_once(__DIR__ . '/model/functions.php');
 //$_POST通信が発生した時
 if($_POST){
 
-
     //$user として　userSystem　クラスをインスタンスする。
     $user = new userSystem();
-
 
     //Emailで存在確認
     //$user->userEmailCheck
@@ -25,13 +23,11 @@ if($_POST){
             $error[] = 'ユーザ名、メールアドレスが違っています';
         }else{
             //存在する
-                //セッションに保存
-                $_SESSION['userName'] = $result['userName'];
-                $_SESSION['userKey'] = $result['userKey'];
-                $_SESSION['userId'] = $result['id'];
-                //TOPに遷移
-                header("Location: {$const(DIR)}");
-                exit();
+            //セッションに保存
+
+            //TOPに遷移
+            header("Location: {$const(DIR)}");
+            exit();
         }
     }else{
         //存在していない　エラー
