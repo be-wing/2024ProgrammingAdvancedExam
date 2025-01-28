@@ -15,11 +15,10 @@ if($_GET['id']){
 
 
     $dbh = new PDO(DSN, DB_USERNAME, DB_PASSWORD);
-    $sql = 'DELETE FROM `posts` WHERE `id`=:id AND `user_key`=:user_key';
+    $sql = '';
     $stmt = $dbh->prepare($sql);
     //バインド
-    $stmt->bindValue(':id', $id);
-    $stmt->bindValue(':user_key', $userKey);
+
    
     //クエリの実行
     $result = $stmt->execute();
