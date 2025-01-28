@@ -12,4 +12,5 @@ try{
 } catch (Exception $e) {
     var_dump( $e->getMessage() );
 }
+
 include_once(__DIR__ . '/view/index-view.php');
