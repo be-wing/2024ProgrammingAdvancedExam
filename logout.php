@@ -3,7 +3,7 @@
 include_once(__DIR__ . '/model/functions.php');
 
 //セッション情報を空にする
-$_SESSION = []; 
+
 
 //userSystem()　を　インスタンスする
 $user = new userSystem();
