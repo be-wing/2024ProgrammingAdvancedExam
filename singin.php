@@ -8,7 +8,6 @@ if($_POST){
     //$user として　userSystem　クラスをインスタンスする。
     $user = new userSystem();
 
-
     //　Emailで既存ユーザがいるかをチェック
     //　$user->userEmailCheck()
     if($user->userEmailCheck($_POST['userEmail'])){
@@ -21,11 +20,7 @@ if($_POST){
         $password = $_POST['userPassword'];
         //すべての値が空でないときDBに登録
         if(
-            $userName !== ''
-            &&
-            $userEmail !== ''
-            &&
-            $password !== ''
+
         ){
             $user->setUser($userName,$userEmail,$password);
         }else{
