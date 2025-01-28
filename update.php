@@ -28,23 +28,10 @@ if($_POST){
     $update_date = date('Y-m-d H:i:s');
 
     $dbh = new PDO(DSN, DB_USERNAME, DB_PASSWORD);
-    $sql = '
-    UPDATE `posts`
-    SET
-        `title`=:title,
-        `body`=:body,
-        `update_date`=:update_date
-    WHERE
-        `id`=:id
-        AND
-        `user_key`=:user_key
-    ';
+    $sql = '';
     $stmt = $dbh->prepare($sql);
-    $stmt->bindValue(':title', $title);
-    $stmt->bindValue(':body', $body);
-    $stmt->bindValue(':update_date', $update_date);
-    $stmt->bindValue(':id', $_GET['id']);
-    $stmt->bindValue(':user_key', $_SESSION['userKey']);
+    //バインド
+
     //クエリの実行
     $result = $stmt->execute();
     $key=$_GET['key'];
