@@ -1,7 +1,6 @@
 <?php
 include_once(__DIR__ . '/model/functions.php');
 
-
 //ログインチェック
 if( !isset($_SESSION['userKey']) ){
     header("Location: {$const(DIR)}"); //TOPに遷移
@@ -15,16 +14,11 @@ if($_POST){
     if($category !== ''){
         $categorykey = $userKey =  hash( "sha256", $category . $date );//カテゴリーの認識に利用
         $dbh = new PDO(DSN, DB_USERNAME, DB_PASSWORD);
-        $sql = "
-            INSERT INTO `category`
-            ( `title`, `user_id`, `category_key`)
-            VALUES
-            (:title,:user_id,:category_key)";
+        $sql = "";
         $stmt = $dbh->prepare($sql);
         //バインド
-        $stmt->bindValue(':title', $category);
-        $stmt->bindValue(':user_id', $_SESSION['userId']);
-        $stmt->bindValue(':category_key', $categorykey);
+
+
         //クエリの実行
         $result = $stmt->execute();
         if($result){
@@ -38,6 +32,5 @@ if($_POST){
         $error[] = 'カテゴリー名が正しくありません';
     }
 }
-
 
 include_once(__DIR__ . '/view/category-view.php');
